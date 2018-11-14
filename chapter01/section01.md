@@ -29,4 +29,5 @@ AJAX 是一种用于创建快速动态网页的技术。
 
 ### AJAX 工作原理
 
+![](../images/chapter01/ajax.jpg)
 

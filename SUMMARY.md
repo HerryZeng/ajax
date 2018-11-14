@@ -2,8 +2,8 @@
 
 * [介绍](README.md)
 * [AJAX教程](chapter1.md)
-  * [第二节：AJAX实例](chapter01/section02.md)
   * [第一节：AJAX简介](chapter01/section01.md)
+  * [第二节：AJAX实例](chapter01/section02.md)
   * [第三节：XHR创建对象](chapter01/section03.md)
   * [第四节：XHR请求](chapter01/section04.md)
   * [第五节：XHR响应](chapter01/section05.md)

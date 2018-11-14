@@ -31,3 +31,13 @@ AJAX 是一种用于创建快速动态网页的技术。
 
 ![](../images/chapter01/ajax.gif)
 
+---
+
+### AJAX是基于现有的Internet标准
+
+AAJAX是基于现有的Internet标准，并且联合使用它们：
+    + XMLHttpRequest对象 (异步的与服务器交换数据)
+    + JavaScript/DOM(信息显示/交互)
+    + CSS (给数据定义样式)
+    + XML (作为转换数据的格式)
+AJAX应用程序与浏览器和平台无关的！

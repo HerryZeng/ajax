@@ -231,3 +231,117 @@ xmlhttp.send("fname=Henry&lname=Ford");
 |方法|	描述|
 |---|---|
 |setRequestHeader(header,value) |向请求添加 HTTP 头。header: 规定头的名称,value: 规定头的值。|
+
+---
+
+### url - 服务器上的文件
+
+`open()` 方法的 `url` 参数是服务器上文件的地址：
+```javascript
+xmlhttp.open("GET","ajax_test.html",true);
+```
+该文件可以是任何类型的文件，比如 .txt 和 .xml，或者服务器脚本文件，比如 .asp 和 .php （在传回响应之前，能够在服务器上执行任务）。
+
+---
+
+### 异步 - True 或 False？
+
+AJAX 指的是异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+
+XMLHttpRequest 对象如果要用于 AJAX 的话，其 open() 方法的 async 参数必须设置为 true：
+```javascript
+xmlhttp.open("GET","ajax_test.html",true);
+```
+对于 web 开发人员来说，发送异步请求是一个巨大的进步。很多在服务器执行的任务都相当费时。AJAX 出现之前，这可能会引起应用程序挂起或停止。
+
+通过 AJAX，JavaScript 无需等待服务器的响应，而是：
+
+  + 在等待服务器响应时执行其他脚本
+
+  + 当响应就绪后对响应进行处理
+  
+
+---
+
+### Async=true
+
+当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数：
+
+```html
+<html>
+
+<head>
+<script>
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","/demo/ajax/ajax_info.txt",true);
+xmlhttp.send();
+}
+</script>
+
+</head><body>
+<div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+<button type="button" onclick="loadXMLDoc()">修改内容</button>
+</body>
+</html>
+```
+您将在稍后的章节学习更多有关 onreadystatechange 的内容。
+
+---
+
+### Async = false
+
+如需使用 async=false，请将 open() 方法中的第三个参数改为 false：
+```javascript
+xmlhttp.open('GET','test1.txt',false);
+```
+我们不推荐使用 async=false，但是对于一些小型的请求，也是可以的。
+
+请记住，JavaScript 会等到服务器响应就绪才继续执行。如果服务器繁忙或缓慢，应用程序会挂起或停止。
+
+注意：当您使用 async=false 时，请不要编写 onreadystatechange 函数 - 把代码放到 send() 语句后面即可：
+
+```html
+<html>
+
+<head>
+<script>
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","/demo/ajax/ajax_info.txt",false);
+xmlhttp.send();
+document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+}
+</script>
+
+</head><body>
+<div id="myDiv"><h2>Let AJAX change this text</h2></div>
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+</body>
+</html>
+```
